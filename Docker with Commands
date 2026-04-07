@@ -1,0 +1,86 @@
+UNIT 2: BASIC DOCKER COMMANDS NOTES (WITH COMMAND EXAMPLES)
+
+1.  Check Docker Version Command: docker –version
+
+Example Output: Docker version 18.09.6
+
+2.  Docker Info Command: docker info
+
+Example: Shows containers, images, storage driver, etc.
+
+
+3.  Docker History Command: docker history httpd
+
+Example: Shows layers and size of httpd image
+
+
+4.  Pull Image from Docker Hub Command: docker pull httpd
+
+Example: Downloads Apache HTTP server image
+
+
+5.  List Docker Images Command: docker images
+
+Example Output: REPOSITORY TAG IMAGE ID SIZE
+
+
+6.  Docker Run Command
+
+Syntax: docker run [OPTIONS] IMAGE [COMMAND]
+
+Common Options: -it → Interactive mode -d → Background mode –name →
+Assign name –rm → Remove container automatically -p → Port mapping -e →
+Environment variable -v → Volume mount
+
+
+Examples:
+
+1.  Simple Run: docker run httpd
+
+2.  Run with command: docker run httpd echo “Hello World”
+
+3.  Run with name: docker run –name my-container httpd
+
+4.  Run interactive + background: docker run -it -d httpd
+
+7.  Environment Variables
+
+Command: docker run -e MY_VAR=value httpd env
+
+Example: docker run -it -e MY_NAME=Harpreet ubuntu bash echo $MY_NAME
+
+Multiple Variables: docker run -e APP_ENV=production -e APP_VERSION=1.0
+nginx
+
+Using .env file: docker run –env-file .env myapp
+
+8.  Port Mapping
+
+Syntax: docker run -p HOST_PORT:CONTAINER_PORT IMAGE
+
+Example: docker run -p 8080:80 nginx
+
+Access in browser: http://localhost:8080
+
+9.  List Containers
+
+Running Containers: docker ps
+
+All Containers: docker ps -a
+
+10. Execute Command Inside Container
+
+Command: docker exec -it bash
+
+Example: docker exec -it abc123 bash
+
+11. Task Example
+
+Run Ubuntu with environment variable: docker run -it -e COLLEGE=CSE
+ubuntu bash
+
+Check variable: echo $COLLEGE
+
+IMPORTANT NOTES: - Environment variables exist only inside container -
+They disappear after container stops - Containers are isolated from host
+system
